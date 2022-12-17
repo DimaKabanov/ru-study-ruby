@@ -17,7 +17,13 @@ module Exercise
       end
 
       # Написать свою функцию my_map
-      def my_map; end
+      def my_map
+        result = []
+
+        my_each { |element| result << yield(element) }
+
+        self.class.new result
+      end
 
       # Написать свою функцию my_compact
       def my_compact; end
