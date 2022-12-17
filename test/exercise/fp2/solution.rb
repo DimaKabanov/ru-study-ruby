@@ -35,7 +35,19 @@ module Exercise
       end
 
       # Написать свою функцию my_reduce
-      def my_reduce; end
+      def my_reduce(initial_acc = nil)
+        result_acc = initial_acc.nil? ? first : initial_acc
+
+        index = 0
+
+        my_each do |element|
+          result_acc = yield(result_acc, element) unless initial_acc.nil? && index.zero?
+
+          index += 1
+        end
+
+        result_acc
+      end
     end
   end
 end
