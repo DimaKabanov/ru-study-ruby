@@ -26,7 +26,13 @@ module Exercise
       end
 
       # Написать свою функцию my_compact
-      def my_compact; end
+      def my_compact
+        result = []
+
+        my_each { |element| result << element unless element.nil? }
+
+        self.class.new result
+      end
 
       # Написать свою функцию my_reduce
       def my_reduce; end
