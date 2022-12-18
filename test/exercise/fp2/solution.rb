@@ -28,9 +28,10 @@ module Exercise
 
       # Написать свою функцию my_compact
       def my_compact
-        result = []
-
-        my_each { |element| result << element unless element.nil? }
+        result = my_reduce([]) do |acc, element|
+          acc << element unless element.nil?
+          acc
+        end
 
         self.class.new result
       end
