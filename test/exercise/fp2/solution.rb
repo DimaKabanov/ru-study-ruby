@@ -18,9 +18,10 @@ module Exercise
 
       # Написать свою функцию my_map
       def my_map
-        result = []
-
-        my_each { |element| result << yield(element) }
+        result = my_reduce([]) do |acc, element|
+          acc << yield(element)
+          acc
+        end
 
         self.class.new result
       end
