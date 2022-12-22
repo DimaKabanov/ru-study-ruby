@@ -16,8 +16,11 @@ module Exercise
         ratings_sum / ratings.count
       end
 
-      def chars_count(_films, _threshold)
-        0
+      def chars_count(films, threshold)
+        films
+          .filter { |film| film['rating_kinopoisk'].to_f >= threshold }
+          .map { |film| film['name'] }
+          .reduce(0) { |total_count, name| total_count + name.count('и') }
       end
     end
   end
